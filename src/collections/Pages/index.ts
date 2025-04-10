@@ -9,8 +9,8 @@ import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
-import { populatePublishedAt } from '../../hooks/populatePublishedAt'
-import { generatePreviewPath } from '../../utilities/generatePreviewPath'
+import { populatePublishedAt } from '@/hooks/populatePublishedAt'
+import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
 import {
@@ -20,6 +20,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import Config from '@/blocks/ImageSlider/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -75,7 +76,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Config,],
               required: true,
               admin: {
                 initCollapsed: true,
