@@ -269,7 +269,7 @@ pnpm add @payloadcms/db-vercel-postgres
 ```
 
 ```ts
-// payload.config.ts
+// payload.theme.ts
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 
 export default buildConfig({
@@ -289,7 +289,7 @@ pnpm add @payloadcms/storage-vercel-blob
 ```
 
 ```ts
-// payload.config.ts
+// payload.theme.ts
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 export default buildConfig({
