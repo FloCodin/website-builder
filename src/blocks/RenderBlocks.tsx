@@ -7,6 +7,8 @@ import { ContentBlock } from '@/blocks/Content/Component';
 import { FormBlock } from '@/blocks/Form/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { default as ImageSlider } from '@/blocks/ImageSlider/Component';
+import type { Theme } from '@/payload-types';
+
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -14,13 +16,15 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
-  imageSlider: ImageSlider, // ✅ wichtig: camelCase passend zum slug
+  imageSlider: ImageSlider,
 };
 
 export const RenderBlocks: React.FC<{
   blocks: Page['layout'][0][];
+  theme?: Theme | null;
+
 }> = (props) => {
-  const { blocks } = props;
+  const { blocks, theme } = props;
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0;
 
   if (hasBlocks) {
@@ -36,7 +40,7 @@ export const RenderBlocks: React.FC<{
               return (
                 <div className="my-16" key={index}>
                   {/* @ts-expect-error some blocks may not be perfectly typed */}
-                  <Block {...block} disableInnerContainer />
+                  <Block {...block} theme={theme} disableInnerContainer />
                 </div>
               );
             }
