@@ -39,7 +39,7 @@ export const ThemeSelector: React.FC = () => {
         aria-label="Select a theme"
         className="w-auto bg-transparent gap-2 pl-0 md:pl-3 border-none"
       >
-        <SelectValue placeholder="Theme" />
+        <SelectValue placeholder="Config" />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="auto">Auto</SelectItem>
