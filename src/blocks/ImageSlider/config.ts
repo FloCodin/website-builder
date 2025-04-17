@@ -1,4 +1,4 @@
-import { Block } from 'payload/types';
+import { Block } from "payload";
 
 const ImageSlider: Block = {
   slug: 'imageSlider', // 👈 wichtig: camelCase
@@ -42,6 +42,18 @@ const ImageSlider: Block = {
       type: 'checkbox',
       label: 'Show Controls',
       defaultValue: true,
+    },
+    {
+      name: 'showPagination',
+      type: 'checkbox',
+      label: 'Show Pagination Dots',
+      defaultValue: true,
+    },
+    {
+      name: 'caption',
+      label: 'Bildtext / Beschreibung',
+      type: 'text',
+      required: false,
     },
   ],
 };
