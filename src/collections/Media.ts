@@ -75,6 +75,13 @@ export const Media: CollectionConfig = {
         height: 630,
         crop: 'center',
       },
+      {
+        name: 'avatar',
+        width: 100,
+        height: 100,
+        position: 'centre',
+      },
+
     ],
   },
 }
