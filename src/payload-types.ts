@@ -103,10 +103,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    theme: Theme;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    theme: ThemeSelect<false> | ThemeSelect<true>;
   };
   locale: null;
   user: User & {
@@ -206,6 +208,8 @@ export interface Page {
         autoplay?: boolean | null;
         loop?: boolean | null;
         showControls?: boolean | null;
+        showPagination?: boolean | null;
+        caption?: string | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'imageSlider';
@@ -363,6 +367,14 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
+    avatar?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
   };
 }
 /**
@@ -393,6 +405,7 @@ export interface Category {
 export interface User {
   id: number;
   name?: string | null;
+  avatar?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1049,6 +1062,8 @@ export interface PagesSelect<T extends boolean = true> {
               autoplay?: T;
               loop?: T;
               showControls?: T;
+              showPagination?: T;
+              caption?: T;
               id?: T;
               blockName?: T;
             };
@@ -1273,6 +1288,16 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
+        avatar?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
       };
 }
 /**
@@ -1301,6 +1326,7 @@ export interface CategoriesSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  avatar?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1625,6 +1651,18 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "theme".
+ */
+export interface Theme {
+  id: number;
+  primaryClass: string;
+  secondaryClass?: string | null;
+  tertiaryClass?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1665,6 +1703,18 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "theme_select".
+ */
+export interface ThemeSelect<T extends boolean = true> {
+  primaryClass?: T;
+  secondaryClass?: T;
+  tertiaryClass?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

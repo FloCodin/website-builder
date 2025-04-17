@@ -16,12 +16,17 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import Theme from '@/globals/theme'
+import Avatar from '@/components/Admin/ui/avatar'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
+    avatar: {
+      Component: './components/Admin/ui/avatar',
+    },
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
@@ -66,7 +71,7 @@ export default buildConfig({
   }),
   collections: [Pages, Posts, Media, Categories, Users,],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [Header, Footer, Theme],
   plugins: [
     ...plugins,
     // storage-adapter-placeholder
