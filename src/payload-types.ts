@@ -218,6 +218,23 @@ export interface Page {
         blockName?: string | null;
         blockType: 'TestimageSlider';
       }
+    | ContentBlock
+    | {
+        images: {
+          image: number | Media;
+          alt: string;
+          id?: string | null;
+        }[];
+        autoplay?: boolean | null;
+        loop?: boolean | null;
+        showControls?: boolean | null;
+        showPagination?: boolean | null;
+        caption?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'imageSlider';
+      }
+    | CallToActionBlock
   )[];
   meta?: {
     title?: string | null;
@@ -444,7 +461,17 @@ export interface Subscription {
 export interface Block {
   id: number;
   title: string;
-  type: 'cta' | 'banner' | 'slider' | 'form' | 'content' | 'media' | 'code' | 'custom';
+  type:
+    | 'cta'
+    | 'testCallToAction'
+    | 'banner'
+    | 'imageSlider'
+    | 'TestimageSlider'
+    | 'form'
+    | 'content'
+    | 'testContent'
+    | 'media'
+    | 'code';
   freigegeben?: boolean | null;
   owner: number | User;
   updatedAt: string;
@@ -1091,6 +1118,24 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         TestimageSlider?:
+          | T
+          | {
+              images?:
+                | T
+                | {
+                    image?: T;
+                    alt?: T;
+                    id?: T;
+                  };
+              autoplay?: T;
+              loop?: T;
+              showControls?: T;
+              showPagination?: T;
+              caption?: T;
+              id?: T;
+              blockName?: T;
+            };
+        imageSlider?:
           | T
           | {
               images?:

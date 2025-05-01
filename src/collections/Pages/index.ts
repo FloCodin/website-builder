@@ -1,12 +1,12 @@
 import type { CollectionConfig } from 'payload'
 
-import { authenticated } from '../../access/authenticated'
-import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Archive } from '../../blocks/ArchiveBlock/config'
-import { CallToAction } from '../../blocks/CallToAction/config'
-import { Content } from '../../blocks/Content/config'
-import { FormBlock } from '../../blocks/Form/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
+import { authenticated } from '@/access/authenticated'
+import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+import { Archive } from '@/blocks/ArchiveBlock/config'
+import { CallToAction } from '@/blocks/CallToAction/config'
+import { Content } from '@/blocks/Content/config'
+import { FormBlock } from '@/blocks/Form/config'
+import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
@@ -21,6 +21,10 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import Config from '@/blocks/ImageSlider/config'
+import { TestContentBlock } from '@/blocks/Test-Content/Component'
+import TestImageSlider from '@/blocks/Test-ImageSlider/config'
+import { TestContent } from '@/blocks/Test-Content/config'
+import { TestCallToAction } from '@/blocks/Test-CallToAction/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -76,7 +80,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Config,],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Config, TestContent, TestImageSlider,TestCallToAction],
               required: true,
               admin: {
                 initCollapsed: true,
