@@ -466,7 +466,7 @@ export interface Block {
     | 'testCallToAction'
     | 'banner'
     | 'imageSlider'
-    | 'TestimageSlider'
+    | 'testImageSlider'
     | 'form'
     | 'content'
     | 'testContent'
