@@ -1,6 +1,6 @@
 import { Block } from "payload";
 
-const TestImageSlider: Block = {
+export const TestImageSlider: Block = {
   slug: 'imageSlider', // 👈 wichtig: camelCase
   labels: {
     singular: 'TestImageSlider',

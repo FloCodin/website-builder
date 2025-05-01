@@ -1,69 +1,63 @@
-'use client';
+'use client'
 
-import { FC, useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import clsx from 'clsx';
+import { useEffect, useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import clsx from 'clsx'
 
 type Image = {
-  image: { url: string };
-  alt: string;
-};
+  image: { url: string }
+  alt: string
+}
 
 type Props = {
-  images: Image[];
-  autoplay?: boolean;
-  loop?: boolean;
-  showControls?: boolean;
-  showPagination?: boolean;
+  images: Image[]
+  autoplay?: boolean
+  loop?: boolean
+  showControls?: boolean
+  showPagination?: boolean
   theme?: {
-    primaryClass?: string;
-    secondaryClass?: string;
-    tertiaryClass?: string;
-  };
-};
+    primaryClass?: string
+    secondaryClass?: string
+    tertiaryClass?: string
+  }
+}
 
-const ImageSlider: FC<Props> = ({
-                                  images,
-                                  autoplay = true,
-                                  loop = true,
-                                  showControls = true,
-                                  showPagination = true,
-                                  theme,
-                                }) => {
-  const [current, setCurrent] = useState(0);
+export const ImageSlider = ({
+                              images,
+                              autoplay = true,
+                              loop = true,
+                              showControls = true,
+                              showPagination = true,
+                              theme,
+                            }: Props) => {
+  const [current, setCurrent] = useState(0)
 
   const nextSlide = () => {
-    setCurrent((prev) =>
-      prev === images.length - 1 ? (loop ? 0 : prev) : prev + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrent((prev) =>
-      prev === 0 ? (loop ? images.length - 1 : 0) : prev - 1
-    );
-  };
-
-  useEffect(() => {
-    if (!autoplay) return;
-
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [autoplay, current]);
-
-  if (!images || images.length === 0) {
-    return <p className="text-center text-white">Keine Bilder vorhanden.</p>;
+    setCurrent((prev) => (prev === images.length - 1 ? (loop ? 0 : prev) : prev + 1))
   }
 
-  // 🎨 Dynamische Klassen aus dem Theme
-  const wrapperClass = theme?.primaryClass || 'bg-zinc-900 text-white';
-  const buttonClass =
-    theme?.secondaryClass || 'bg-black/50 text-white hover:bg-black/70';
-  const dotActiveClass = theme?.secondaryClass || 'bg-blue-600';
-  const dotInactiveClass = theme?.tertiaryClass || 'bg-gray-300';
+  const prevSlide = () => {
+    setCurrent((prev) => (prev === 0 ? (loop ? images.length - 1 : 0) : prev - 1))
+  }
+
+  useEffect(() => {
+    if (!autoplay) return
+
+    const interval = setInterval(() => {
+      nextSlide()
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [autoplay, current])
+
+  if (!images || images.length === 0) {
+    return <p className="text-center text-white">Keine Bilder vorhanden.</p>
+  }
+
+  const wrapperClass = theme?.primaryClass || 'bg-zinc-900 text-white'
+  const buttonClass = theme?.secondaryClass || 'bg-black/50 text-white hover:bg-black/70'
+  const dotActiveClass = theme?.secondaryClass || 'bg-blue-600'
+  const dotInactiveClass = theme?.tertiaryClass || 'bg-gray-300'
 
   return (
     <div
@@ -104,14 +98,12 @@ const ImageSlider: FC<Props> = ({
               onClick={() => setCurrent(index)}
               className={clsx(
                 'w-4 h-4 rounded-full transition-all duration-300',
-                current === index ? dotActiveClass : dotInactiveClass
+                current === index ? dotActiveClass : dotInactiveClass,
               )}
             />
           ))}
         </div>
       )}
     </div>
-  );
-};
-
-export default ImageSlider;
+  )
+}
