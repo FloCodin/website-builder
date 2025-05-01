@@ -1,5 +1,6 @@
 import { GlobalConfig } from 'payload/types'
 
+
 const Theme: GlobalConfig = {
   slug: 'theme',
   label: 'Theme Colors',
@@ -24,6 +25,7 @@ const Theme: GlobalConfig = {
         { label: 'Indigo', value: 'bg-indigo-600 text-white' },
         { label: 'Orange', value: 'bg-orange-500 text-white' },
         { label: 'Gelb', value: 'bg-yellow-400 text-black' },
+        { label: 'Emerald', value: 'bg-emerald-400 text-black' },
       ],
     },
     {
@@ -41,6 +43,7 @@ const Theme: GlobalConfig = {
         { label: 'Indigo', value: 'bg-indigo-600 text-white' },
         { label: 'Orange', value: 'bg-orange-500 text-white' },
         { label: 'Gelb', value: 'bg-yellow-400 text-black' },
+        { label: 'Emerald', value: 'bg-emerald-400 text-black' },
       ],
     },
     {
@@ -58,6 +61,7 @@ const Theme: GlobalConfig = {
         { label: 'Indigo', value: 'bg-indigo-600 text-white' },
         { label: 'Orange', value: 'bg-orange-500 text-white' },
         { label: 'Gelb', value: 'bg-yellow-400 text-black' },
+        { label: 'Emerald', value: 'bg-emerald-400 text-black' },
       ],
     },
   ],
