@@ -21,8 +21,8 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import Config from '@/blocks/ImageSlider/config'
-import { TestContentBlock } from '@/blocks/Test-Content/Component'
-import TestImageSlider from '@/blocks/Test-ImageSlider/config'
+
+import { TestImageSlider } from '@/blocks/Test-ImageSlider/config'
 import { TestContent } from '@/blocks/Test-Content/config'
 import { TestCallToAction } from '@/blocks/Test-CallToAction/config'
 
@@ -80,7 +80,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Config, TestContent, TestImageSlider,TestCallToAction],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Config, TestContent, TestCallToAction, TestImageSlider],
               required: true,
               admin: {
                 initCollapsed: true,
