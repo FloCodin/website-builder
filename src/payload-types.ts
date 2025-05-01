@@ -72,6 +72,8 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
+    blocks: Block;
+    subscriptions: Subscription;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -88,6 +90,8 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    blocks: BlocksSelect<false> | BlocksSelect<true>;
+    subscriptions: SubscriptionsSelect<false> | SubscriptionsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -212,7 +216,7 @@ export interface Page {
         caption?: string | null;
         id?: string | null;
         blockName?: string | null;
-        blockType: 'imageSlider';
+        blockType: 'TestimageSlider';
       }
   )[];
   meta?: {
@@ -404,8 +408,10 @@ export interface Category {
  */
 export interface User {
   id: number;
-  name?: string | null;
+  name: string;
   avatar?: (number | null) | Media;
+  role: 'superuser' | 'admin' | 'editor';
+  subscription?: (number | null) | Subscription;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -416,6 +422,33 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "subscriptions".
+ */
+export interface Subscription {
+  id: number;
+  title: string;
+  admin: number | User;
+  allowedBlocks?: (number | Block)[] | null;
+  active?: boolean | null;
+  expiresAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blocks".
+ */
+export interface Block {
+  id: number;
+  title: string;
+  type: 'cta' | 'banner' | 'slider' | 'form' | 'content' | 'media' | 'code' | 'custom';
+  freigegeben?: boolean | null;
+  owner: number | User;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -952,6 +985,14 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
+        relationTo: 'blocks';
+        value: number | Block;
+      } | null)
+    | ({
+        relationTo: 'subscriptions';
+        value: number | Subscription;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -1049,7 +1090,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
-        imageSlider?:
+        TestimageSlider?:
           | T
           | {
               images?:
@@ -1327,6 +1368,8 @@ export interface CategoriesSelect<T extends boolean = true> {
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
   avatar?: T;
+  role?: T;
+  subscription?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1336,6 +1379,31 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blocks_select".
+ */
+export interface BlocksSelect<T extends boolean = true> {
+  title?: T;
+  type?: T;
+  freigegeben?: T;
+  owner?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "subscriptions_select".
+ */
+export interface SubscriptionsSelect<T extends boolean = true> {
+  title?: T;
+  admin?: T;
+  allowedBlocks?: T;
+  active?: T;
+  expiresAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

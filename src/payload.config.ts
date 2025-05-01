@@ -18,6 +18,8 @@ import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import Theme from '@/globals/theme'
 import Avatar from '@/components/Admin/ui/avatar'
+import { Subscriptions } from '@/collections/Subscription'
+import { Blocks } from '@/collections/Blocks'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -69,7 +71,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users,],
+  collections: [Pages, Posts, Media, Categories, Users, Blocks, Subscriptions,],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Theme],
   plugins: [
