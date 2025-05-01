@@ -8,6 +8,9 @@ import { FormBlock } from '@/blocks/Form/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { default as ImageSlider } from '@/blocks/ImageSlider/Component';
 import type { Theme } from '@/payload-types';
+import TestImageSlider from '@/blocks/ImageSlider/Component'
+import { TestContentBlock } from '@/blocks/Test-Content/Component'
+import { TestCallToActionBlock } from '@/blocks/Test-CallToAction/Component'
 
 
 const blockComponents = {
@@ -17,6 +20,9 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   imageSlider: ImageSlider,
+  testContent: TestContentBlock,
+  testImageSlider: TestImageSlider,
+  testCallToAction: TestCallToActionBlock,
 };
 
 export const RenderBlocks: React.FC<{
