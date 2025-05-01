@@ -219,6 +219,7 @@ export interface Page {
         blockType: 'TestimageSlider';
       }
     | ContentBlock
+    | CallToActionBlock
     | {
         images: {
           image: number | Media;
@@ -234,7 +235,6 @@ export interface Page {
         blockName?: string | null;
         blockType: 'imageSlider';
       }
-    | CallToActionBlock
   )[];
   meta?: {
     title?: string | null;

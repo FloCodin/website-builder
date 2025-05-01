@@ -20,6 +20,7 @@ import Theme from '@/globals/theme'
 import Avatar from '@/components/Admin/ui/avatar'
 import { Subscriptions } from '@/collections/Subscription'
 import { Blocks } from '@/collections/Blocks'
+import { meEndpoint } from './endpoints/me'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -72,6 +73,7 @@ export default buildConfig({
     },
   }),
   collections: [Pages, Posts, Media, Categories, Users, Blocks, Subscriptions,],
+  endpoints: [meEndpoint],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Theme],
   plugins: [
