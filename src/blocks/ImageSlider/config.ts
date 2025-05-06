@@ -1,7 +1,7 @@
 import { Block } from "payload";
 
 const ImageSlider: Block = {
-  slug: 'TestimageSlider', // 👈 wichtig: camelCase
+  slug: 'imageSlider', // 👈 wichtig: camelCase
   labels: {
     singular: 'Image Slider',
     plural: 'Image Sliders',
