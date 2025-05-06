@@ -13,8 +13,8 @@ export const Blocks: CollectionConfig = {
 
       if (!user) return false;
 
-      // SuperUser oder Admin sehen alles
-      if (['superuser', 'admin'].includes(user.role)) return true;
+      // SuperUser sehen alles
+      if (['superuser'].includes(user.role)) return true;
 
       // Editor → nur erlaubte Blocks aus Subscription
       if (user.role === 'editor' && typeof user.subscription === 'string') {
