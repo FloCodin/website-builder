@@ -10,8 +10,8 @@ import {
 import { linkGroup } from '@/fields/linkGroup'
 
 export const TestCallToAction: Block = {
-  slug: 'cta',
-  interfaceName: 'CallToActionBlock',
+  slug: 'testCTA',
+  interfaceName: 'TestCallToActionBlock',
   fields: [
     {
       name: 'richText',
